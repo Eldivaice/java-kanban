@@ -1,3 +1,4 @@
+import manager.Managers;
 import manager.TaskManager;
 import tasks.Epic;
 import tasks.Subtask;
@@ -9,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TaskManager taskManager = new TaskManager();
+        TaskManager taskManager = Managers.getDefault();
 
         Task task1 = new Task("task1", "desc1", TaskStatus.NEW);
         taskManager.createTask(task1);
@@ -40,6 +41,31 @@ public class Main {
         System.out.println(taskManager.getListOfSubtasks());
         System.out.println(taskManager.getListOfEpics());
         System.out.println("======");
+        System.out.println();
+
+        System.out.println("Просмотр истории 1 элемент");
+        taskManager.getTaskById(1);
+        System.out.println(taskManager.getHistory());
+        System.out.println("++++++++++");
+        System.out.println();
+        System.out.println("Просмотр истории 10 элементов");
+        taskManager.getEpicById(2);
+        taskManager.getTaskById(3);
+        taskManager.getEpicById(4);
+        taskManager.getSubtaskById(5);
+        taskManager.getSubtaskById(6);
+        taskManager.getSubtaskById(7);
+        taskManager.getSubtaskById(5);
+        taskManager.getEpicById(4);
+        taskManager.getTaskById(3);
+        System.out.println(taskManager.getHistory());
+        System.out.println();
+        System.out.println("++++++++++");
+        System.out.println();
+        System.out.println("Просмотр истории после добавления 11 просмотра, первым должен стать Эпик1");
+        taskManager.getTaskById(3);
+        System.out.println(taskManager.getHistory());
+        System.out.println("=======");
         System.out.println();
 
         System.out.println("Удаляем subtask 1-ого эпика");
