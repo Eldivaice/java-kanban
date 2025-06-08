@@ -20,10 +20,8 @@ class InMemoryHistoryManagerTest {
 
         if (taskViewHistoryTest.size() >= 10) {
             taskViewHistoryTest.removeFirst();
-            taskViewHistoryTest.add(task);
-        } else {
-            taskViewHistoryTest.add(task);
         }
+        taskViewHistoryTest.add(task);
 
         assertEquals(1, taskViewHistoryTest.size(), "Неверное количество задач.");
         assertNotNull(taskViewHistoryTest, "Задачи не возвращаются.");

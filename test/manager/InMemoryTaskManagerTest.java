@@ -7,6 +7,7 @@ import tasks.Task;
 import tasks.TaskStatus;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class InMemoryTaskManagerTest {
 
 
-    private final HashMap<Integer, Task> tasksByIdTest = new HashMap<>();
-    private final HashMap<Integer, Epic> epicByIdTest = new HashMap<>();
-    private final HashMap<Integer, Subtask> subtasksByIdTest = new HashMap<>();
+    private final Map<Integer, Task> tasksByIdTest = new HashMap<>();
+    private final Map<Integer, Epic> epicByIdTest = new HashMap<>();
+    private final Map<Integer, Subtask> subtasksByIdTest = new HashMap<>();
 
     private Integer nextId = 1;
 

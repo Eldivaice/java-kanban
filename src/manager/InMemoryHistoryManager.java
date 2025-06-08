@@ -14,14 +14,12 @@ public class InMemoryHistoryManager implements HistoryManager {
     public void addTaskView(Task task) {
         if (taskViewHistory.size() >= 10) {
             taskViewHistory.removeFirst();
-            taskViewHistory.add(task);
-        } else {
-            taskViewHistory.add(task);
         }
+        taskViewHistory.add(task);
     }
 
     @Override
     public List<Task> getHistory() {
-        return taskViewHistory;
+        return new ArrayList<>(taskViewHistory);
     }
 }

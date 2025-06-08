@@ -8,14 +8,15 @@ import tasks.TaskStatus;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
 
     private final HistoryManager historyManager = Managers.getDefaultHistory();
 
-    private final HashMap<Integer, Task> tasksById = new HashMap<>();
-    private final HashMap<Integer, Epic> epicById = new HashMap<>();
-    private final HashMap<Integer, Subtask> subtasksById = new HashMap<>();
+    private final Map<Integer, Task> tasksById = new HashMap<>();
+    private final Map<Integer, Epic> epicById = new HashMap<>();
+    private final Map<Integer, Subtask> subtasksById = new HashMap<>();
 
 
     private Integer nextId = 1;
@@ -124,9 +125,10 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Task getTaskById(int id) {
-        if (tasksById.get(id) != null) {
-            historyManager.addTaskView(tasksById.get(id));
-            return tasksById.get(id);
+        Task task = tasksById.get(id);
+        if (task != null) {
+            historyManager.addTaskView(task);
+            return task;
         } else {
             System.out.println("Задачи с таким id нет!");
             return null;
@@ -135,9 +137,10 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Epic getEpicById(int id) {
-        if (epicById.get(id) != null) {
-            historyManager.addTaskView(epicById.get(id));
-            return epicById.get(id);
+        Epic epic = epicById.get(id);
+        if (epic != null) {
+            historyManager.addTaskView(epic);
+            return epic;
         } else {
             System.out.println("Задачи с таким id нет!");
             return null;
@@ -146,9 +149,10 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public Subtask getSubtaskById(int id) {
-        if (subtasksById.get(id) != null) {
-            historyManager.addTaskView(subtasksById.get(id));
-            return subtasksById.get(id);
+        Subtask subtask = subtasksById.get(id);
+        if (subtask != null) {
+            historyManager.addTaskView(subtask);
+            return subtask;
         } else {
             System.out.println("Задачи с таким id нет!");
             return null;
